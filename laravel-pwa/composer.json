@@ -1,0 +1,31 @@
+{
+    "name": "admin/laravel-pwa",
+    "type": "library",
+    "require": {
+        "illuminate/support": ">=5.4",
+        "php": ">=5.6"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tran-Dinh-Dat",
+            "email": "trandinhdat120@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "Admin\\LaravelPwa\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "\\Admin\\LaravelPwa\\PwaServiceProvider"
+            ],
+            "aliases": {
+                "LaravelPwa" : "Admin\\LaravelPwa\\LaravelPwa"
+            }
+        }
+    }
+}

@@ -3,11 +3,11 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Laravel</title>
+        <title>Pusher Test</title>
 
         <!-- Fonts -->
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
 
         <!-- Styles -->
         <style>
@@ -19,6 +19,21 @@
                 font-family: 'Nunito', sans-serif;
             }
         </style>
+        <script src="https://js.pusher.com/7.2/pusher.min.js"></script>
+        <script>
+      
+          // Enable pusher logging - don't include this in production
+          Pusher.logToConsole = true;
+      
+          var pusher = new Pusher('c4fd6bf1dfea16c73810', {
+            cluster: 'ap1'
+          });
+      
+          var channel = pusher.subscribe('laravel-pusher-channel');
+          channel.bind('my-event', function(data) {
+            alert(JSON.stringify(data));
+          });
+        </script>
     </head>
     <body class="antialiased">
         <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
