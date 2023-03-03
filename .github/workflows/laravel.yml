@@ -1,17 +1,16 @@
-on: push
-name: 🚀 Deploy website on push
+name: remote ssh command
+on: [push]
 jobs:
-  web-deploy:
-    name: 🎉 Deploy
+
+  build:
+    name: Build
     runs-on: ubuntu-latest
     steps:
-    - name: 🚚 Get latest code
-      uses: actions/checkout@v3
-    
-    - name: 📂 Sync files
-      uses: SamKirkland/FTP-Deploy-Action@4.3.3
+    - name: executing remote ssh commands using password
+      uses: appleboy/ssh-action@v0.1.8
       with:
-        server: 103.97.126.23
-        username: cicd@trandinhdat.site
-        password: password
-        server-dir: /home/sxjkdjjl/domains/trandinhdat.site/
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        port: ${{ secrets.PORT }}
+        script: whoami
