@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ChatController;
+use App\Http\Controllers\ReportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('reports', [ReportController::class, 'index']);
+Route::get('reports/custom', [ReportController::class, 'custom']);
 
 Route::group(['middleware' => ['auth']], function () {
     Route::resource('roles', RoleController::class);
@@ -34,5 +37,4 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('chat', [ChatController::class, 'index']);
     Route::get('messages', [ChatController::class, 'fetchMessage'])->name('fetchMessage');
     Route::post('messages', [ChatController::class, 'sendMessage'])->name('sendMessage');
-
 });
