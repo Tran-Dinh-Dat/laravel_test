@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ProductController;
+use App\Http\Controllers\Api\ReportController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -21,3 +23,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/import', [ProductController::class, 'import'])->middleware(['auth:sanctum']);
+Route::get('/reports', [ReportController::class, 'index']);
